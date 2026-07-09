@@ -1,0 +1,23 @@
+services:
+  all2pod:
+    image: ghcr.io/jdmry/all2pod:latest
+    container_name: all2pod
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Required
+      TORBOX_API_KEY: ${TORBOX_API_KEY}
+      ADMIN_USER: ${ADMIN_USER}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      PUBLIC_URL: ${PUBLIC_URL}
+      # Optional
+      TMDB_API_KEY: ${TMDB_API_KEY:-}
+      COMET_URL: ${COMET_URL:-}
+      # Storage split: state on local disk, bulk media on ./data
+      # (point ./data at a network mount if you want cheap bulk storage).
+      DATA_PATH: /config/feeds.json
+      MEDIA_DIR: /data
+    volumes:
+      - ./config:/config # feeds.json, ffmpeg scratch, image cache (keep local)
+      - ./data:/data # converted videos + uploads (may be a mount)
