@@ -1,6 +1,8 @@
 # all2pod
 
-Self-hosted app that turns your [TorBox](https://torbox.app) content into **podcast RSS feeds** — video or audio — that you can subscribe to in any podcast app (Apple Podcasts, Overcast, Pocket Casts, …).
+**Turn anything into a podcast feed.**
+
+Self-hosted app that turns your [TorBox](https://torbox.app) content or your own uploaded files into **podcast RSS feeds** — video or audio — that you can subscribe to in any podcast app (Apple Podcasts, Overcast, Pocket Casts, …).
 
 Create feeds, add movies/shows/audiobooks to them, and all2pod publishes a per-feed RSS feed. Video is transcoded to an Apple-compatible MP4; streams are fetched fresh from TorBox at play time, so links never expire.
 
@@ -60,10 +62,6 @@ all2pod separates hot local state from bulk media, so the media directory can be
 - **`/data`** (local or a mount) — finished converted videos + uploads. Large, sequential, write-once.
 
 The compose file maps these to `./config` and `./data`. Point `./data` at a mounted volume if you want cheap bulk storage; keep `./config` local.
-
-## Deploy on CapRover
-
-This repo ships a `captain-definition` that references the published image, so you can create a CapRover app from it directly. Enable **Has Persistent Data**, mount a **local** volume for `/config` and a volume for `/data`, then set the environment variables above (use `DATA_PATH=/config/feeds.json` and `MEDIA_DIR=/data`).
 
 ## Usage
 
