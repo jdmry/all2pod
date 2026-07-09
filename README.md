@@ -49,12 +49,12 @@ docker run -d --name all2pod --restart unless-stopped \
 | `ADMIN_PASSWORD` | yes      | Password for the admin UI.                                                                   |
 | `PUBLIC_URL`     | yes      | Full public URL of the app, e.g. `https://podcast.example.com`.                             |
 | `TMDB_API_KEY`   | no       | Free TMDB key for posters and search. Get one at https://www.themoviedb.org/settings/api    |
-| `COMET_URL`      | no       | Base URL of a [Comet](https://github.com/g0ldyy/comet) instance for the search-first flow.  |
-| `DATA_PATH`      | no       | JSON store path (default `/data/feeds.json`). Its directory also holds ffmpeg scratch + the image cache — keep it on **local disk**. |
+| `COMET_URL`      | no       | Base URL of a Comet instance for the search-first flow.                                      |
+| `DATA_PATH`      | no       | JSON store path (default `/data/feeds.json`). Its directory also holds ffmpeg scratch + the image cache — keep it on local disk. |
 | `MEDIA_DIR`      | no       | Directory for converted videos + uploads. Defaults to the `DATA_PATH` directory. May be a network mount. |
 | `PORT`           | no       | Internal listen port (default `8080`).                                                       |
 
-### Storage
+## Storage
 
 all2pod separates hot local state from bulk media, so the media directory can be a network mount:
 
